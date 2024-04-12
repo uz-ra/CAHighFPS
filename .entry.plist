@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>entry</key>
+	<dict>
+		<key>bundle</key>
+		<string>AltList</string>
+		<key>cell</key>
+		<string>PSLinkListCell</string>
+		<key>defaultApplicationSwitchValue</key>
+		<false/>
+		<key>defaults</key>
+		<string>com.ps.cahighfps</string>
+		<key>detail</key>
+		<string>ATLApplicationListMultiSelectionController</string>
+		<key>isController</key>
+		<true/>
+		<key>key</key>
+		<string>CAHighFPS</string>
+		<key>label</key>
+		<string>CAHighFPS</string>
+		<key>overridePrincipalClass</key>
+		<true/>
+		<key>sections</key>
+		<array>
+			<dict>
+				<key>sectionType</key>
+				<string>User</string>
+			</dict>
+			<dict>
+				<key>sectionType</key>
+				<string>System</string>
+			</dict>
+		</array>
+		<key>showIdentifiersAsSubtitle</key>
+		<true/>
+		<key>useSearchBar</key>
+		<true/>
+	</dict>
+</dict>
+</plist>
