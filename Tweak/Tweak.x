@@ -283,10 +283,10 @@ void frameTick(){
   for (NSString *key in defaults.allKeys)
     if (!prefs[key])
       prefs[key] = defaults[key];
-
+/*
 	int token = 0;
 	notify_register_dispatch("com.ps.cahighfps/loadPref", &token, dispatch_get_main_queue(), ^(int token) {
 		loadPref();
 	});
-
+*/
 }
