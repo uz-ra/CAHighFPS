@@ -10,13 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@main
 
-      - name: Checkout theos/theos
+      - name: Checkout uz-ra/theos
         uses: actions/checkout@main
         with:
-          repository: theos/theos
-          ref: master
+          repository: uz-ra/theos
+          ref: main
           submodules: recursive
-          path: theos
+          path: uz-ra/theos
 
       - name: Checkout theos/sdks
         uses: actions/checkout@main
