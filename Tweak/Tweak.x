@@ -21,11 +21,18 @@ if ([prefs[@"customFpsEnabled"]boolValue]){
 }
     return maxFPS;
 }
-/*
-static BOOL shouldEnableForBundleIdentifier(NSString *bundleIdentifier) {
 
+static BOOL shouldEnableForBundleIdentifier(NSString *bundleIdentifier) {
+    NSDictionary *prefs = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.ps.cahighfps"];
     NSArray <NSString *> *value = [prefs objectForKey:@"App"];
     return ![value containsObject:bundleIdentifier];
+}
+
+/*
+static BOOL isEnabledApp(){
+	NSString* bundleIdentifier=[[NSBundle mainBundle] bundleIdentifier];
+    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/jb/var/mobile/Library/Preferences/com.ps.cahighfps.plist"];
+    return [prefs[@"App"] containsObject:bundleIdentifier];
 }
 */
 
@@ -103,15 +110,11 @@ static BOOL shouldEnableForBundleIdentifier(NSString *bundleIdentifier) {
 
 // %end
 
-static BOOL isEnabledApp(){
-	NSString* bundleIdentifier=[[NSBundle mainBundle] bundleIdentifier];
-    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/jb/var/mobile/Library/Preferences/com.ps.cahighfps.plist"];
-    return [prefs[@"App"] containsObject:bundleIdentifier];
-}
+
 
 %ctor {
-if(isEnabledApp()) {
-//    if (isTarget(TargetTypeApps) && shouldEnableForBundleIdentifier(NSBundle.mainBundle.bundleIdentifier)) {
+//if(isEnabledApp()) {
+    if (isTarget(TargetTypeApps) && shouldEnableForBundleIdentifier(NSBundle.mainBundle.bundleIdentifier)) {
         // if (IS_IOS_OR_NEWER(iOS_15_0)) { // iOS 15.0 only?
 //             MSImageRef ref = MSGetImageByName("/System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore");
         //     _UIUpdateCycleSchedulerEnabled = (BOOL (*)(void))MSFindSymbol(ref, "__UIUpdateCycleSchedulerEnabled");
