@@ -10,14 +10,14 @@ NSMutableDictionary *prefs;
 @property (assign) CGFloat drawableTimeoutSeconds;
 @end
 
-static BOOL enabled;
+static BOOL customFpsEnabled;
 
 static NSInteger maxFPS = -1;
 
 static NSInteger getMaxFPS() {
 
 //if ([prefs[@"customFpsEnabled"]boolValue]){
-if(enabled){
+if(customFpsEnabled){
     if (maxFPS == -1)
         maxFPS = [prefs[@"customFPS"]doubleValue];
 }else {
