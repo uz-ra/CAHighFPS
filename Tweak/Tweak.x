@@ -117,6 +117,9 @@ enum FPSMode{
 };
 static enum FPSMode fpsMode;
 
+static dispatch_source_t _timer;
+static UILabel *fpsLabel;
+
 static void loadPref(){
 	NSLog(@"loadPref..........");
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/jb/var/mobile/Library/Preferences/com.ps.cahighfps.plist"];
@@ -124,8 +127,8 @@ static void loadPref(){
 	fpsMode=prefs[@"fpsMode"]?[prefs[@"fpsMode"] intValue]:0;
 	if(fpsMode==0) fpsMode++; //0.0.2 compatibility 
 
-	NSString *colorString = @"#FF5062"; 
-    UIColor *color = LCPParseColorString(colorString, nil);
+//	NSString *colorString = @"#FF5062"; 
+UIColor *color = [UIColor redColor];
 
 	[fpsLabel setTextColor:color];
 
