@@ -10,17 +10,21 @@ NSMutableDictionary *prefs;
 @property (assign) CGFloat drawableTimeoutSeconds;
 @end
 
+static BOOL enabled;
+
 static NSInteger maxFPS = -1;
 
 static NSInteger getMaxFPS() {
-/*
-if ([prefs[@"customFpsEnabled"]boolValue]){
+
+//if ([prefs[@"customFpsEnabled"]boolValue]){
+if(enabled){
+    if (maxFPS == -1)
         maxFPS = [prefs[@"customFPS"]doubleValue];
 }else {
-*/
+
     if (maxFPS == -1)
         maxFPS = [UIScreen mainScreen].maximumFramesPerSecond;
-//}
+}
     return maxFPS;
 }
 /*
@@ -125,7 +129,7 @@ static UILabel *fpsLabel;
 static void loadPref(){
 	NSLog(@"loadPref..........");
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/jb/var/mobile/Library/Preferences/com.ps.cahighfps.plist"];
-
+customFpsEnabled=prefs[@"customFpsEnabled"]?[prefs[@"customFpsEnabled"] boolValue]:YES;
 	fpsMode=prefs[@"fpsMode"]?[prefs[@"fpsMode"] intValue]:0;
 	if(fpsMode==0) fpsMode++; //0.0.2 compatibility 
 
