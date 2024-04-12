@@ -26,10 +26,10 @@ jobs:
           submodules: recursive
           path: theos/vendor/lib
 
-      - name: Checkout theos/include
+      - name: Checkout theos/headers
         uses: actions/checkout@main
         with:
-          repository: theos/include
+          repository: theos/headers
           ref: master
           submodules: recursive
           path: theos/vendor/include
