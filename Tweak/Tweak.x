@@ -111,6 +111,26 @@ static BOOL isEnabledApp(){
 // %end
 
 //fpsind
+enum FPSMode{
+	kModeAverage=1,
+	kModePerSecond
+};
+static enum FPSMode fpsMode;
+
+static void loadPref(){
+	NSLog(@"loadPref..........");
+	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/jb/var/mobile/Library/Preferences/com.ps.cahighfps.plist"];
+
+	fpsMode=prefs[@"fpsMode"]?[prefs[@"fpsMode"] intValue]:0;
+	if(fpsMode==0) fpsMode++; //0.0.2 compatibility 
+
+	NSString *colorString = @"#FF5062"; 
+    UIColor *color = LCPParseColorString(colorString, nil);
+
+	[fpsLabel setTextColor:color];
+
+}
+
 double FPSavg = 0;
 double FPSPerSecond = 0;
 
@@ -260,4 +280,10 @@ void frameTick(){
   for (NSString *key in defaults.allKeys)
     if (!prefs[key])
       prefs[key] = defaults[key];
+
+	int token = 0;
+	notify_register_dispatch("com.ps.cahighfps/loadPref", &token, dispatch_get_main_queue(), ^(int token) {
+		loadPref();
+	});
+
 }
