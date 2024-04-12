@@ -13,4 +13,4 @@ export TARGET = iphone:clang:latest:15.0
 SUBPROJECTS += Tweak Prefs
 
 
-include $(THEOS_MAKE_PATH)/aggregate.mk
+
