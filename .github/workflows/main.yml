@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@main
         with:
           repository: theos/sdks
-          sparse-checkout: iPhoneOS14.5.sdk
+          sparse-checkout: iPhoneOS16.5.sdk
           path: theos/sdks
 
       - name: Build Package
