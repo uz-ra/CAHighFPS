@@ -53,7 +53,6 @@ static BOOL shouldEnableForBundleIdentifier(NSString *bundleIdentifier) {
     range.preferred = max;
     range.maximum = max;
 }
-}
 
 %end
 %end //1
