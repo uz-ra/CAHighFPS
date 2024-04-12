@@ -18,6 +18,22 @@ jobs:
           submodules: recursive
           path: theos
 
+      - name: Checkout theos/lib
+        uses: actions/checkout@main
+        with:
+          repository: theos/lib
+          ref: master
+          submodules: recursive
+          path: theos/vendor/lib
+
+      - name: Checkout theos/headers
+        uses: actions/checkout@main
+        with:
+          repository: theos/headers
+          ref: master
+          submodules: recursive
+          path: theos/vendor/include
+
       - name: Checkout theos/sdks
         uses: actions/checkout@main
         with:
