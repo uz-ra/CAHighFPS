@@ -13,12 +13,14 @@ NSMutableDictionary *prefs;
 static NSInteger maxFPS = -1;
 
 static NSInteger getMaxFPS() {
+/*
 if ([prefs[@"customFpsEnabled"]boolValue]){
         maxFPS = [prefs[@"customFPS"]doubleValue];
 }else {
+*/
     if (maxFPS == -1)
         maxFPS = [UIScreen mainScreen].maximumFramesPerSecond;
-}
+//}
     return maxFPS;
 }
 /*
@@ -54,11 +56,11 @@ static BOOL isEnabledApp(){
 }
 
 - (void)setPreferredFrameRateRange:(CAFrameRateRange)range {
-    %orig;
     CGFloat max = getMaxFPS();
     range.minimum = 30;
     range.preferred = max;
     range.maximum = max;
+    %orig;
 }
 
 %end
@@ -110,7 +112,7 @@ static BOOL isEnabledApp(){
 
 // %end
 
-//fpsind
+//fpsindicator
 enum FPSMode{
 	kModeAverage=1,
 	kModePerSecond
