@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-//#import <PSHeader/PS.h>
+#import <PSHeader/PS.h>
 
 NSMutableDictionary *prefs;
 
