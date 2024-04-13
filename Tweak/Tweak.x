@@ -150,10 +150,10 @@ static void startRefreshTimer(){
     dispatch_source_set_event_handler(_timer, ^{
     	switch(fpsMode){
 		    case kModeAverage:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %d",FPSavg, getMaxFPS]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %d",FPSavg, getMaxFPS()]];
 		    	break;
 		    case kModePerSecond:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %d",FPSPerSecond, getMaxFPS]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %d",FPSPerSecond, getMaxFPS()]];
 		    	break;
 		    default:
 		    	break;
