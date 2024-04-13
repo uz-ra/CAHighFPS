@@ -19,7 +19,7 @@ static NSInteger getMaxFPS() {
 //if ([prefs[@"customFpsEnabled"]boolValue]){
 if(customFpsEnabled){
     if (maxFPS == -1)
-        maxFPS = [prefs[@"customFPS"]doubleValue];
+        maxFPS = (int)[prefs[@"customFPS"]doubleValue];
 }else {
 
     if (maxFPS == -1)
@@ -178,7 +178,7 @@ static void startRefreshTimer(){
         CGFloat safeOffsetX=0;
         if(@available(iOS 11.0,*)) {
             if(self.frame.size.width<self.frame.size.height){
-                safeOffsetY=self.safeAreaInsets.top;    
+                safeOffsetY=self.safeAreaInsets.top + 60;    
             }
             else{
                 safeOffsetX=self.safeAreaInsets.right;
