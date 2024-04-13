@@ -19,10 +19,9 @@ static NSInteger maxFPS = -1;
 static NSInteger getMaxFPS() {
 
 //if ([prefs[@"customFpsEnabled"]boolValue]){
-if(customFpsEnabled){
-    if (maxFPS == -1)
+if(customFpsEnabled == 1){
         maxFPS = (int)[prefs[@"customFPS"]doubleValue];
-}else {
+}else if(customFpsEnabled == 0){
 
     if (maxFPS == -1)
         maxFPS = [UIScreen mainScreen].maximumFramesPerSecond;
