@@ -11,6 +11,8 @@ NSMutableDictionary *prefs;
 @end
 
 static BOOL customFpsEnabled;
+    CGFloat rangeMin;
+    CGFloat rangeMax;
 
 static NSInteger maxFPS = -1;
 
@@ -64,8 +66,8 @@ static BOOL isEnabledApp(){
     range.minimum = 30;
     range.preferred = max;
     range.maximum = max;
-    CGFloat rangeMin = range.minimum;
-    CGFloat rangeMax = range.maximum;
+    rangeMin = range.minimum;
+    rangeMax = range.maximum;
     %orig;
 }
 
