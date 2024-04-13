@@ -150,10 +150,10 @@ static void startRefreshTimer(){
     dispatch_source_set_event_handler(_timer, ^{
     	switch(fpsMode){
 		    case kModeAverage:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld\n%d",FPSavg, getMaxFPS(), customFpsEnabled]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d)",FPSavg, getMaxFPS(), customFpsEnabled]];
 		    	break;
 		    case kModePerSecond:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld\n%d",FPSPerSecond, getMaxFPS(), customFpsEnabled]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d)",FPSPerSecond, getMaxFPS(), customFpsEnabled]];
 		    	break;
 		    default:
 		    	break;
@@ -167,7 +167,7 @@ static void startRefreshTimer(){
 
 #pragma mark ui
 #define kFPSLabelWidth 100
-#define kFPSLabelHeight 40
+#define kFPSLabelHeight 20
 %group ui
 %hook UIWindow
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
