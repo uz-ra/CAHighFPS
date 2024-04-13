@@ -52,8 +52,15 @@ static BOOL isEnabledApp(){
 
 - (void)setFrameInterval:(NSInteger)interval {
     %orig(1);
+/*
+if(customFpsEnabled){
     if ([self respondsToSelector:@selector(setPreferredFramesPerSecond:)])
+        self.preferredFramesPerSecond = (int)[prefs[@"customFPS"]doubleValue];
+} else {
+    if ([self respondsToSelector:@selector(setPreferredFramesPerSecond:)])
+*/
         self.preferredFramesPerSecond = 0;
+//}
 }
 
 - (void)setPreferredFramesPerSecond:(NSInteger)fps {
@@ -179,7 +186,7 @@ static void startRefreshTimer(){
 }
 
 #pragma mark ui
-#define kFPSLabelWidth 200
+#define kFPSLabelWidth 250
 #define kFPSLabelHeight 20
 %group ui
 %hook UIWindow
