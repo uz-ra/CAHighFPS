@@ -64,8 +64,13 @@ static BOOL isEnabledApp(){
 - (void)setPreferredFrameRateRange:(CAFrameRateRange)range {
     CGFloat max = getMaxFPS();
     range.minimum = 30;
+if(customFpsEnabled){
+    range.preferred = (int)[prefs[@"customFPS"]doubleValue];
+    range.maximum = (int)[prefs[@"customFPS"]doubleValue];
+} else { 
     range.preferred = max;
     range.maximum = max;
+}
     rangeMin = range.minimum;
     rangeMax = range.maximum;
     %orig;
