@@ -154,10 +154,10 @@ static void startRefreshTimer(){
     dispatch_source_set_event_handler(_timer, ^{
     	switch(fpsMode){
 		    case kModeAverage:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d, %g ~ %g)",FPSavg, getMaxFPS(), customFpsEnabled, rangeMin, rangeMax]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d, %g ~ %g), %d",FPSavg, getMaxFPS(), customFpsEnabled, rangeMin, rangeMax, (int)[prefs[@"customFPS"]doubleValue]]];
 		    	break;
 		    case kModePerSecond:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d, %g ~ %g)",FPSPerSecond, getMaxFPS(), customFpsEnabled, rangeMin, rangeMax]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d, %g ~ %g), %d",FPSPerSecond, getMaxFPS(), customFpsEnabled, rangeMin, rangeMax,(int)[prefs[@"customFPS"]doubleValue]]];
 		    	break;
 		    default:
 		    	break;
@@ -170,7 +170,7 @@ static void startRefreshTimer(){
 }
 
 #pragma mark ui
-#define kFPSLabelWidth 100
+#define kFPSLabelWidth 200
 #define kFPSLabelHeight 20
 %group ui
 %hook UIWindow
