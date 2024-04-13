@@ -150,10 +150,10 @@ static void startRefreshTimer(){
     dispatch_source_set_event_handler(_timer, ^{
     	switch(fpsMode){
 		    case kModeAverage:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld",FPSavg, getMaxFPS()]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld\n%d",FPSavg, getMaxFPS(), customFpsEnabled]];
 		    	break;
 		    case kModePerSecond:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld",FPSPerSecond, getMaxFPS()]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld\n%d",FPSPerSecond, getMaxFPS(), customFpsEnabled]];
 		    	break;
 		    default:
 		    	break;
@@ -167,7 +167,7 @@ static void startRefreshTimer(){
 
 #pragma mark ui
 #define kFPSLabelWidth 100
-#define kFPSLabelHeight 20
+#define kFPSLabelHeight 40
 %group ui
 %hook UIWindow
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
@@ -178,7 +178,7 @@ static void startRefreshTimer(){
         CGFloat safeOffsetX=0;
         if(@available(iOS 11.0,*)) {
             if(self.frame.size.width<self.frame.size.height){
-                safeOffsetY=self.safeAreaInsets.top + 60;    
+                safeOffsetY=self.safeAreaInsets.top + 50;    
             }
             else{
                 safeOffsetX=self.safeAreaInsets.right;
