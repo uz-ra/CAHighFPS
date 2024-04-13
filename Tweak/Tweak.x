@@ -64,6 +64,8 @@ static BOOL isEnabledApp(){
     range.minimum = 30;
     range.preferred = max;
     range.maximum = max;
+    CGFloat rangeMin = range.minimum;
+    CGFloat rangeMax = range.maximum;
     %orig;
 }
 
@@ -150,10 +152,10 @@ static void startRefreshTimer(){
     dispatch_source_set_event_handler(_timer, ^{
     	switch(fpsMode){
 		    case kModeAverage:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d)",FPSavg, getMaxFPS(), customFpsEnabled]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d, %d ~ %d)",FPSavg, getMaxFPS(), customFpsEnabled, rangeMin, rangeMax]];
 		    	break;
 		    case kModePerSecond:
-		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d)",FPSPerSecond, getMaxFPS(), customFpsEnabled]];
+		    	[fpsLabel setText:[NSString stringWithFormat:@"%.1lf / %ld (%d, %d ~ %d)",FPSPerSecond, getMaxFPS(), customFpsEnabled, rangeMin, rangeMax]];
 		    	break;
 		    default:
 		    	break;
