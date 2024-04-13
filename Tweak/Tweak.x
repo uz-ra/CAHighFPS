@@ -200,7 +200,7 @@ static void startRefreshTimer(){
         CGFloat safeOffsetX=0;
         if(@available(iOS 11.0,*)) {
             if(self.frame.size.width<self.frame.size.height){
-                safeOffsetY=self.safeAreaInsets.top + 50;    
+                safeOffsetY=self.safeAreaInsets.top + 25;    
             }
             else{
                 safeOffsetX=self.safeAreaInsets.right;
